@@ -46,6 +46,7 @@
 
 // Problem initialization headers
 #include "bondi.hpp"
+#include "agn_disk.hpp"
 #include "explosion.hpp"
 #include "fm_torus.hpp"
 #include "gizmo.hpp"
@@ -83,6 +84,7 @@ void KHARMA::ProblemGenerator(MeshBlock* pmb, ParameterInput* pin)
     // Breakout to call the appropriate initialization function,
     // defined in accompanying headers.
     TaskStatus status = TaskStatus::fail;
+    cerr << prob << std::endl;
     // MHD
     if (prob == "mhdmodes") {
         status = InitializeMHDModes(rc, pin);
@@ -97,6 +99,10 @@ void KHARMA::ProblemGenerator(MeshBlock* pmb, ParameterInput* pin)
         // GRMHD
     } else if (prob == "bondi") {
         status = InitializeBondi(rc, pin);
+    } else if (prob == "agn_disk") {
+        cerr << "Before" << std::endl;
+        status = InitializeAGNDisk(rc, pin);
+        cerr << "After" << std::endl;
         // Electrons
     } else if (prob == "noh") {
         status = InitializeNoh(rc, pin);

@@ -66,7 +66,7 @@ disable_floors = true
 # Don't hide problems by being cute about inversion
 # We should never hit inversion failures in this problem
 vel_recovery = false
-fix_average_neighbors = true
+fix_average_neighbors = false # bad!
 
 <boundaries>
 # We'll be adding material, and that's okay
